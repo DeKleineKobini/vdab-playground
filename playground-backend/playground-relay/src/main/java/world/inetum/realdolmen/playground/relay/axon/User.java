@@ -6,6 +6,7 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import world.inetum.realdolmen.playground.api.axon.UserPlayedEvent;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package world.inetum.realdolmen.playground.relay.axon;
+package world.inetum.realdolmen.playground.api.axon;
 
 import java.util.Objects;
 
