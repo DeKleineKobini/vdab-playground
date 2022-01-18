@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import world.inetum.realdolmen.playground.relay.axon.UserPlayCommand;
 
+import java.util.UUID;
+
 @Service
 public class AxonService {
 
@@ -20,7 +22,7 @@ public class AxonService {
     public void sendPlayCommand(String email, String country) {
         LOGGER.info("Sending play command for {} in {}.", email, country);
         try {
-            commandGateway.sendAndWait(new UserPlayCommand(email, country));
+            commandGateway.sendAndWait(new UserPlayCommand(UUID.randomUUID(), email, country));
         } catch (Exception exception) {
             LOGGER.error("Something went wrong with axon.", exception);
         }

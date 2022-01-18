@@ -18,8 +18,7 @@ public class User {
     private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
 
     @AggregateIdentifier
-    private UUID uuid = UUID.randomUUID();
-
+    private UUID uuid;
     private String email;
     private String country;
 
@@ -31,15 +30,16 @@ public class User {
         if (command.getCountry() == null)
             throw new IllegalArgumentException("country is null");
 
-        apply(new UserPlayedEvent(command.getEmail(), command.getCountry()));
+        apply(new UserPlayedEvent(command.getUuid(), command.getEmail(), command.getCountry()));
     }
 
     @EventSourcingHandler
     public void on(UserPlayedEvent event) {
+        uuid = event.getUuid();
         email = event.getEmail();
         country = event.getCountry();
 
-        LOGGER.info("on user played - {} + {}", email, country);
+        LOGGER.info("on user played - {} ({}) + {}", email, uuid, country);
     }
 
 }

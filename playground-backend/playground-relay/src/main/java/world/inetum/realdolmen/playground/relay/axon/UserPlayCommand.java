@@ -3,16 +3,23 @@ package world.inetum.realdolmen.playground.relay.axon;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class UserPlayCommand {
 
     @TargetAggregateIdentifier
+    private final UUID uuid;
     private final String email;
     private final String country;
 
-    public UserPlayCommand(String email, String country) {
+    public UserPlayCommand(UUID uuid, String email, String country) {
+        this.uuid = uuid;
         this.email = email;
         this.country = country;
+    }
+
+    public UUID getUuid() {
+        return uuid;
     }
 
     public String getEmail() {
@@ -28,18 +35,19 @@ public class UserPlayCommand {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserPlayCommand that = (UserPlayCommand) o;
-        return Objects.equals(email, that.email) && Objects.equals(country, that.country);
+        return Objects.equals(uuid, that.uuid) && Objects.equals(email, that.email) && Objects.equals(country, that.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, country);
+        return Objects.hash(uuid, email, country);
     }
 
     @Override
     public String toString() {
         return "UserPlayCommand{" +
-                "email='" + email + '\'' +
+                "uuid=" + uuid +
+                ", email='" + email + '\'' +
                 ", country='" + country + '\'' +
                 '}';
     }
