@@ -1,0 +1,18 @@
+:host {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid black;
+  padding: 1em;
+  gap: 0.5em;
+}
+
+.confirm, button {
+  grid-column: span 2;
+}

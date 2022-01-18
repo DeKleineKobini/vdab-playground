@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>world.inetum.realdolmen</groupId>
+    <artifactId>playground</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <java.version>17</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- Axon -->
+        <axon.version>4.5.7</axon.version>
+
+        <!-- JMS -->
+        <jakarta.jms-api.version>2.0.3</jakarta.jms-api.version>
+
+        <!-- Spring -->
+        <spring-boot.version>2.6.2</spring-boot.version>
+
+        <!-- Maven plugins -->
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
+
+    <modules>
+        <module>playground-api</module>
+        <module>playground-service</module>
+        <module>playground-relay</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Axon -->
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-spring-boot-starter</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <type>pom</type>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

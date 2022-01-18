@@ -1,0 +1,33 @@
+version: "3.1"
+
+services:
+  axonserver:
+    image: images.vdab.be/ci/axonserver:4.5.8
+    container_name: axonserver
+    hostname: axonserver
+    ports:
+      - "8024:8024"
+      - "8124:8124"
+    environment:
+      AXONSERVER_HOSTNAME: axonserver
+      AXONIQ_AXONSERVER_AUTOCLUSTER_FIRST: axonserver # Defines the first node in the cluster, by specifying its internal hostname and the internal port. If the internal port is default (8224) it can be omitted.
+      AXONIQ_AXONSERVER_AUTOCLUSTER_CONTEXTS: playground
+    restart: on-failure
+
+  amq:
+    image: images.vdab.be/mirror/redhat/amq7/amq-broker:latest
+    container_name: amq
+    ports:
+      - "8161:8161"   # Web Server
+      - "61616:61616" # Core,MQTT,AMQP,HORNETQ,STOMP,Openwire
+    environment:
+      AMQ_USER: admin
+      AMQ_PASSWORD: admin
+
+  oracle:
+    image: images.vdab.be/devops/oracle-12-dev:latest
+    container_name: oracle
+    hostname: oracle
+    ports:
+      - "4013:1521"
+    restart: on-failure
