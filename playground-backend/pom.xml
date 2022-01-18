@@ -12,19 +12,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <!-- Axon -->
         <axon.version>4.5.7</axon.version>
+        <xstream.version>1.4.17</xstream.version>
 
         <!-- JMS -->
         <jakarta.jms-api.version>2.0.3</jakarta.jms-api.version>
 
         <!-- Spring -->
-        <spring-boot.version>2.6.2</spring-boot.version>
+        <spring-boot.version>2.5.4</spring-boot.version>
 
         <!-- Maven plugins -->
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
@@ -43,6 +44,11 @@
                 <groupId>org.axonframework</groupId>
                 <artifactId>axon-spring-boot-starter</artifactId>
                 <version>${axon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${xstream.version}</version>
             </dependency>
 
             <!-- Spring -->
