@@ -6,6 +6,7 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import world.inetum.realdolmen.playground.api.axon.UserIncrementedEvent;
 import world.inetum.realdolmen.playground.api.axon.UserPlayedEvent;
 
 import java.util.UUID;
@@ -22,6 +23,8 @@ public class User {
     private String email;
     private String country;
 
+    private int amount = 0;
+
     public User() {
     }
 
@@ -33,6 +36,11 @@ public class User {
         apply(new UserPlayedEvent(command.getUuid(), command.getEmail(), command.getCountry()));
     }
 
+    @CommandHandler
+    public void handle(UserIncrementCommand command) {
+        apply(new UserIncrementedEvent(command.getUuid()));
+    }
+
     @EventSourcingHandler
     public void on(UserPlayedEvent event) {
         uuid = event.getUuid();
@@ -41,5 +49,13 @@ public class User {
 
         LOGGER.info("on user played - {} ({}) + {}", email, uuid, country);
     }
+
+    @EventSourcingHandler
+    public void on(UserIncrementedEvent event) {
+        amount++;
+
+        LOGGER.info("on user increment - {} to {}", uuid, amount);
+    }
+
 
 }

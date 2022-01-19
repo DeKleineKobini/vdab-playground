@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import world.inetum.realdolmen.playground.service.dtos.PlayCreateDto;
+import world.inetum.realdolmen.playground.service.dtos.UserIncrementDto;
 import world.inetum.realdolmen.playground.service.jms.JmsCommandSender;
 
 @Service
@@ -21,6 +22,11 @@ public class PlayService {
     public void play(PlayCreateDto dto) {
         LOGGER.info("Played by '{}' from '{}'!", dto.getEmail(), dto.getCountry());
         jmsCommandSender.play(dto.getEmail(), dto.getCountry());
+    }
+
+    public void increment(UserIncrementDto dto) {
+        LOGGER.info("Increment for '{}'.", dto.getUuid());
+        jmsCommandSender.increment(dto.getUuid());
     }
 
 }

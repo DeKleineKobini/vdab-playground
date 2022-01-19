@@ -27,6 +27,12 @@ public class UserProjection {
         userRepository.save(user);
     }
 
+    @EventHandler
+    public void on(UserIncrementedEvent event) {
+        userRepository.findById(event.getUuid())
+                .ifPresent((user) -> user.setAmount(user.getAmount() + 1));
+    }
+
     @ResetHandler
     public void reset() {
         userRepository.deleteAll();

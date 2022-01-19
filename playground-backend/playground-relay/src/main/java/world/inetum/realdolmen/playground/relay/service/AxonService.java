@@ -4,6 +4,7 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import world.inetum.realdolmen.playground.relay.axon.UserIncrementCommand;
 import world.inetum.realdolmen.playground.relay.axon.UserPlayCommand;
 
 import java.util.UUID;
@@ -23,6 +24,15 @@ public class AxonService {
         LOGGER.info("Sending play command for {} in {}.", email, country);
         try {
             commandGateway.sendAndWait(new UserPlayCommand(UUID.randomUUID(), email, country));
+        } catch (Exception exception) {
+            LOGGER.error("Something went wrong with axon.", exception);
+        }
+    }
+    
+    public void sendIncrementCommand(UUID uuid) {
+        LOGGER.info("Sending increment command for {}.", uuid);
+        try {
+            commandGateway.sendAndWait(new UserIncrementCommand(uuid));
         } catch (Exception exception) {
             LOGGER.error("Something went wrong with axon.", exception);
         }

@@ -5,7 +5,9 @@ import java.util.function.Predicate;
 
 public enum PlaygroundCommand {
 
-    PLAY_COMMAND("PLAY_COMMAND", o -> o instanceof PlayCommand);
+    PLAY_COMMAND("PLAY_COMMAND", o -> o instanceof PlayCommand),
+    INCREMENT_COMMAND("INCREMENT_COMMAND", o -> o instanceof IncrementCommand),
+    ;
 
     private final String commandName;
     private final Predicate<Object> matches;

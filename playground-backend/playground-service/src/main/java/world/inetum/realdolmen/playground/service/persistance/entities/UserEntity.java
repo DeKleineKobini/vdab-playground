@@ -1,5 +1,6 @@
 package world.inetum.realdolmen.playground.service.persistance.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
@@ -13,6 +14,8 @@ public class UserEntity {
 
     private String email;
     private String country;
+    @Column(nullable = false)
+    private int amount = 0;
 
     public UserEntity() {
     }
@@ -21,6 +24,7 @@ public class UserEntity {
         this.uuid = uuid;
         this.email = email;
         this.country = country;
+        this.amount = 0;
     }
 
     public UUID getUuid() {
@@ -47,17 +51,25 @@ public class UserEntity {
         this.country = country;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(uuid, that.uuid) && Objects.equals(email, that.email) && Objects.equals(country, that.country);
+        return amount == that.amount && Objects.equals(uuid, that.uuid) && Objects.equals(email, that.email) && Objects.equals(country, that.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, email, country);
+        return Objects.hash(uuid, email, country, amount);
     }
 
     @Override
@@ -66,6 +78,7 @@ public class UserEntity {
                 "uuid=" + uuid +
                 ", email='" + email + '\'' +
                 ", country='" + country + '\'' +
+                ", amount=" + amount +
                 '}';
     }
 

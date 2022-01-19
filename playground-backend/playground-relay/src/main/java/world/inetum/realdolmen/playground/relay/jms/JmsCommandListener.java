@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import world.inetum.realdolmen.playground.api.jms.IncrementCommand;
 import world.inetum.realdolmen.playground.api.jms.JmsUtil;
 import world.inetum.realdolmen.playground.api.jms.PlayCommand;
 import world.inetum.realdolmen.playground.api.jms.PlaygroundCommand;
@@ -28,7 +29,7 @@ public class JmsCommandListener {
     }
 
     @JmsListener(destination = "${jms.queue:playground.queue}")
-    public void onPlay(final Message message) {
+    public void onMessage(final Message message) {
         try {
             final String commandName = JmsUtil.getCommandName(message);
             PlaygroundCommand playgroundCommand = PlaygroundCommand.ofName(commandName);
@@ -42,6 +43,10 @@ public class JmsCommandListener {
                 PlayCommand command = objectMapper.readValue(body, PlayCommand.class);
 
                 axonService.sendPlayCommand(command.getEmail(), command.getCountry());
+            } else if (PlaygroundCommand.INCREMENT_COMMAND.equals(playgroundCommand)) {
+                IncrementCommand command = objectMapper.readValue(body, IncrementCommand.class);
+
+                axonService.sendIncrementCommand(command.getUuid());
             } else {
                 LOGGER.warn("Received unhandled command with name: {}", commandName);
             }
