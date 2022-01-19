@@ -1,0 +1,21 @@
+<table>
+  <thead>
+  <tr>
+    <th>UUID</th>
+    <th>Email</th>
+    <th>Country</th>
+    <th>Amount</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users$ | async">
+    <td>{{user.uuid}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.country}}</td>
+    <td>{{user.amount}}</td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <button (click)="refreshUsers()">Refresh</button>
+  </tfoot>
+</table>
