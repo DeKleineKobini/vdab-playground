@@ -2,12 +2,17 @@ package world.inetum.realdolmen.playground.service.axon;
 
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.eventhandling.ResetHandler;
+import org.axonframework.queryhandling.QueryHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import world.inetum.realdolmen.playground.api.axon.UserIncrementedEvent;
 import world.inetum.realdolmen.playground.api.axon.UserPlayedEvent;
+import world.inetum.realdolmen.playground.service.axon.queries.FindUsersQuery;
 import world.inetum.realdolmen.playground.service.persistance.entities.UserEntity;
 import world.inetum.realdolmen.playground.service.persistance.repositories.UserRepository;
+
+import java.util.List;
 
 @Component
 public class UserProjection {
@@ -38,6 +43,11 @@ public class UserProjection {
         userRepository.deleteAll();
 
         LOGGER.info("Cleared out UserEntity table.");
+    }
+
+    @QueryHandler
+    public List<UserEntity> handle(FindUsersQuery query) {
+        return userRepository.findAll();
     }
 
 }
