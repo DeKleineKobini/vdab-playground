@@ -36,7 +36,9 @@ export class PlayFormComponent implements OnInit {
     this.playService.play(dto)
       .subscribe(() => {
         // FIXME - Response handling
-        this.form.reset();
+        this.form.reset({
+          country: "be",
+        });
       });
   }
 
