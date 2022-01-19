@@ -71,16 +71,16 @@ describe("IncrementFormComponent", () => {
 
 export class IncrementFormComponentPage extends ComponentPage<IncrementFormComponent> {
 
-  protected getRootComponentSelector(): Type<IncrementFormComponent> {
-    return IncrementFormComponent;
-  }
-
   get uuidField(): HTMLInputElement {
     return this.query<HTMLInputElement>("#uuid");
   }
 
   get submitButton(): HTMLButtonElement {
     return this.query<HTMLButtonElement>("button[type='submit']");
+  }
+
+  protected getRootComponentSelector(): Type<IncrementFormComponent> {
+    return IncrementFormComponent;
   }
 
 }

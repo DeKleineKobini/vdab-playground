@@ -1,18 +1,18 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
   <label for="email">Email: </label>
-  <input id="email" type="text" formControlName="email">
+  <input formControlName="email" id="email" type="text">
 
   <label for="country">Country: </label>
-  <select id="country" formControlName="country">
+  <select formControlName="country" id="country">
     <option value="be">België</option>
     <option value="nl">Nederland</option>
     <option value="fr">Frankrijk</option>
   </select>
 
   <div class="confirm">
-    <input id="confirm" formControlName="confirmed" type="checkbox">
+    <input formControlName="confirmed" id="confirm" type="checkbox">
     <label for="confirm">Dit moet aangevinkt zijn</label>
   </div>
 
-  <button type="submit" [disabled]="!form.valid">Submit</button>
+  <button [disabled]="!form.valid" type="submit">Submit</button>
 </form>

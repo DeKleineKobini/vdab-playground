@@ -1,6 +1,6 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
   <label for="uuid">UUID: </label>
-  <input id="uuid" type="text" formControlName="uuid">
+  <input formControlName="uuid" id="uuid" type="text">
 
-  <button type="submit" [disabled]="!form.valid">Submit</button>
+  <button [disabled]="!form.valid" type="submit">Submit</button>
 </form>

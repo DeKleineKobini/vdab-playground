@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PlayService} from "../play.service";
-import {PlayDto} from "../play-form/play.dto";
 import {IncrementDto} from "./increment.dto";
 
 @Component({
-  selector: 'app-increment-form',
-  templateUrl: './increment-form.component.html',
-  styleUrls: ['./increment-form.component.css']
+  selector: "app-increment-form",
+  templateUrl: "./increment-form.component.html",
+  styleUrls: ["./increment-form.component.css"],
 })
 export class IncrementFormComponent implements OnInit {
 

@@ -74,10 +74,6 @@ describe("RegisterFormComponent", () => {
 
 export class PlayFormComponentPage extends ComponentPage<PlayFormComponent> {
 
-  protected getRootComponentSelector(): Type<PlayFormComponent> {
-    return PlayFormComponent;
-  }
-
   get emailField(): HTMLInputElement {
     return this.query<HTMLInputElement>("#email");
   }
@@ -92,6 +88,10 @@ export class PlayFormComponentPage extends ComponentPage<PlayFormComponent> {
 
   get submitButton(): HTMLButtonElement {
     return this.query<HTMLButtonElement>("button[type='submit']");
+  }
+
+  protected getRootComponentSelector(): Type<PlayFormComponent> {
+    return PlayFormComponent;
   }
 
 }
