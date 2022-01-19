@@ -33,6 +33,7 @@ export class IncrementFormComponent implements OnInit {
     this.playService.increment(dto)
       .subscribe(() => {
         // FIXME - Response handling
+        this.form.reset();
       });
   }
 
