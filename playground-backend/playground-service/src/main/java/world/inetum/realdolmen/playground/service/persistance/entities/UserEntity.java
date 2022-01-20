@@ -1,11 +1,14 @@
 package world.inetum.realdolmen.playground.service.persistance.entities;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
 
+@Audited
 @Entity
 public class UserEntity {
 

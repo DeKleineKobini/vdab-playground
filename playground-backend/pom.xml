@@ -29,6 +29,9 @@
 
         <!-- Maven plugins -->
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+
+        <!-- Envers -->
+        <hibernate-envers.version>5.4.32.Final</hibernate-envers.version>
     </properties>
 
     <modules>
@@ -58,6 +61,13 @@
                 <type>pom</type>
                 <version>${spring-boot.version}</version>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- Envers -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-envers</artifactId>
+                <version>${hibernate-envers.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
