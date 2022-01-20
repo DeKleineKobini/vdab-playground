@@ -53,6 +53,11 @@
                 <artifactId>xstream</artifactId>
                 <version>${xstream.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-test</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
 
             <!-- Spring -->
             <dependency>
