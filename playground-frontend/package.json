@@ -26,6 +26,9 @@
     "@angular-devkit/build-angular": "~13.0.2",
     "@angular/cli": "~13.0.2",
     "@angular/compiler-cli": "~13.0.0",
+    "@pact-foundation/karma-pact": "^3.1.0",
+    "@pact-foundation/pact-node": "^10.17.1",
+    "@pact-foundation/pact-web": "^9.17.2",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",
@@ -34,6 +37,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "path": "^0.12.7",
     "typescript": "~4.4.3"
   }
 }

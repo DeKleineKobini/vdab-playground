@@ -1,16 +1,18 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+const path = require("path");
 
 module.exports = function (config) {
   config.set({
     basePath: '..',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular', "pact"],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require("@pact-foundation/karma-pact"),
     ],
     client: {
       jasmine: {
@@ -52,5 +54,16 @@ module.exports = function (config) {
       showSpecTiming: true,      // print the time elapsed for each spec
       failFast: false              // test would finish with error when a first fail occurs.
     },
+    pact: [{
+      port: 9999,
+      consumer: "playground-ui",
+      provider: "playground-rest",
+      logLevel: "DEBUG",
+      dir: "pact/pacts",
+      log: "pact/logs/pact-tests.log"
+    }],
+    proxies: {
+      "/playground/api": "http://localhost:9999/playground/api"
+    }
   });
 };
