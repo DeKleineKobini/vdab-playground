@@ -1,9 +1,9 @@
 import {ComponentFixture, fakeAsync, TestBed} from "@angular/core/testing";
 import {PlayFormComponent} from "./play-form.component";
-import {ComponentPage} from "../../testing/component-page";
+import {ComponentPage} from "../../../testing/component-page";
 import {Type} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {TestUtil} from "../../testing/test-util";
+import {TestUtil} from "../../../testing/test-util";
 import {of} from "rxjs";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientTestingModule} from "@angular/common/http/testing";

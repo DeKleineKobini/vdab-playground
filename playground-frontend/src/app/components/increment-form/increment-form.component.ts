@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PlayService} from "../play.service";
+import {PlayService} from "../../services/play.service";
 import {IncrementDto} from "./increment.dto";
 
 @Component({
