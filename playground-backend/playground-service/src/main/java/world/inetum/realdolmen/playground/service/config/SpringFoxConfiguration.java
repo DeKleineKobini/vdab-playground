@@ -22,7 +22,9 @@ public class SpringFoxConfiguration {
                 .apis(RequestHandlerSelectors.basePackage(Application.class.getPackageName()))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .forCodeGeneration(true)
+                .useDefaultResponseMessages(false);
     }
 
     private ApiInfo apiInfo() {

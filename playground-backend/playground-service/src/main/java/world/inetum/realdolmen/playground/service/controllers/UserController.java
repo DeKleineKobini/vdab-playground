@@ -1,5 +1,7 @@
 package world.inetum.realdolmen.playground.service.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +11,7 @@ import world.inetum.realdolmen.playground.service.services.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Api(tags = "User Information")
 @RestController
 @RequestMapping("users")
 public class UserController {
@@ -19,6 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @ApiOperation("Get the information of all existing users.")
     @GetMapping
     public List<UserReadDto> getUsers() {
         return userService.getUsers()
