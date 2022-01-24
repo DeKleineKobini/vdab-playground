@@ -1,6 +1,6 @@
 {
   "/playground/api": {
-    "target": "http://localhost:6000",
+    "target": "http://localhost:8087",
     "secure": false,
     "pathRewrite": {
       "^/playground/api": "/"
