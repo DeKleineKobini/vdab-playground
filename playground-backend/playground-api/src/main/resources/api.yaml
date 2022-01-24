@@ -1,0 +1,47 @@
+openapi: 3.0.3
+
+info:
+  version: 1.0.0
+  title: Playground Internal Api
+
+paths: { }
+
+components:
+  schemas:
+    IncrementCommand:
+      type: object
+      required:
+        - uuid
+      properties:
+        uuid:
+          type: UUID
+    PlayCommand:
+      type: object
+      required:
+        - email
+        - country
+      properties:
+        email:
+          type: string
+        country:
+          type: string
+    UserIncrementedEvent:
+      type: object
+      required:
+        - uuid
+      properties:
+        uuid:
+          type: UUID
+    UserPlayedEvent:
+      type: object
+      required:
+        - uuid
+        - email
+        - country
+      properties:
+        uuid:
+          type: UUID
+        email:
+          type: string
+        country:
+          type: string

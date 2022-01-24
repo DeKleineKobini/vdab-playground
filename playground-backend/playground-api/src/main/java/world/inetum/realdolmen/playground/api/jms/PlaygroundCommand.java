@@ -1,5 +1,8 @@
 package world.inetum.realdolmen.playground.api.jms;
 
+import world.inetum.realdolmen.playground.api.IncrementCommand;
+import world.inetum.realdolmen.playground.api.PlayCommand;
+
 import java.util.Arrays;
 import java.util.function.Predicate;
 

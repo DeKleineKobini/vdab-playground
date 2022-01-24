@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
-import world.inetum.realdolmen.playground.api.jms.IncrementCommand;
+import world.inetum.realdolmen.playground.api.IncrementCommand;
+import world.inetum.realdolmen.playground.api.PlayCommand;
 import world.inetum.realdolmen.playground.api.jms.JmsUtil;
-import world.inetum.realdolmen.playground.api.jms.PlayCommand;
 import world.inetum.realdolmen.playground.api.jms.PlaygroundCommand;
 import world.inetum.realdolmen.playground.service.config.properties.JmsProperties;
 
@@ -27,13 +27,16 @@ public class JmsCommandSender {
     }
 
     public void play(String email, String country) {
-        PlayCommand command = new PlayCommand(email, country);
+        PlayCommand command = new PlayCommand()
+                .email(email)
+                .country(country);
 
         sendCommand(command);
     }
 
     public void increment(UUID uuid) {
-        IncrementCommand command = new IncrementCommand(uuid);
+        IncrementCommand command = new IncrementCommand()
+                .uuid(uuid);
 
         sendCommand(command);
     }

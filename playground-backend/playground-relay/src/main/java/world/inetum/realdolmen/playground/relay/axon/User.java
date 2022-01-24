@@ -6,8 +6,8 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import world.inetum.realdolmen.playground.api.axon.UserIncrementedEvent;
-import world.inetum.realdolmen.playground.api.axon.UserPlayedEvent;
+import world.inetum.realdolmen.playground.api.UserIncrementedEvent;
+import world.inetum.realdolmen.playground.api.UserPlayedEvent;
 
 import java.util.UUID;
 
@@ -33,12 +33,17 @@ public class User {
         if (command.getCountry() == null)
             throw new IllegalArgumentException("country is null");
 
-        apply(new UserPlayedEvent(command.getUuid(), command.getEmail(), command.getCountry()));
+        apply(
+                new UserPlayedEvent()
+                        .uuid(command.getUuid())
+                        .email(command.getEmail())
+                        .country(command.getCountry())
+        );
     }
 
     @CommandHandler
     public void handle(UserIncrementCommand command) {
-        apply(new UserIncrementedEvent(command.getUuid()));
+        apply(new UserIncrementedEvent().uuid(command.getUuid()));
     }
 
     @EventSourcingHandler

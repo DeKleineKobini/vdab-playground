@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
-import world.inetum.realdolmen.playground.api.jms.IncrementCommand;
+import world.inetum.realdolmen.playground.api.IncrementCommand;
+import world.inetum.realdolmen.playground.api.PlayCommand;
 import world.inetum.realdolmen.playground.api.jms.JmsUtil;
-import world.inetum.realdolmen.playground.api.jms.PlayCommand;
 import world.inetum.realdolmen.playground.api.jms.PlaygroundCommand;
 import world.inetum.realdolmen.playground.relay.service.AxonService;
 

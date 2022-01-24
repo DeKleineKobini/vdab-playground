@@ -4,8 +4,8 @@ import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import world.inetum.realdolmen.playground.api.axon.UserIncrementedEvent;
-import world.inetum.realdolmen.playground.api.axon.UserPlayedEvent;
+import world.inetum.realdolmen.playground.api.UserIncrementedEvent;
+import world.inetum.realdolmen.playground.api.UserPlayedEvent;
 
 import java.util.UUID;
 
@@ -26,14 +26,21 @@ class UserTest {
     void shouldPlay() {
         fixture.givenNoPriorActivity()
                 .when(new UserPlayCommand(USER_UUID, EMAIL, COUNTRY))
-                .expectEvents(new UserPlayedEvent(USER_UUID, EMAIL, COUNTRY));
+                .expectEvents(new UserPlayedEvent()
+                        .uuid(USER_UUID)
+                        .email(EMAIL)
+                        .country(COUNTRY));
     }
 
     @Test
     void shouldIncrement() {
-        fixture.given(new UserPlayedEvent(USER_UUID, EMAIL, COUNTRY))
+        fixture.given(new UserPlayedEvent()
+                        .uuid(USER_UUID)
+                        .email(EMAIL)
+                        .country(COUNTRY))
                 .when(new UserIncrementCommand(USER_UUID))
-                .expectEvents(new UserIncrementedEvent(USER_UUID));
+                .expectEvents(new UserIncrementedEvent()
+                        .uuid(USER_UUID));
     }
 
 }
