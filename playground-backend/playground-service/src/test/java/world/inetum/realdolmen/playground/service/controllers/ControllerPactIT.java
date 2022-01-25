@@ -9,6 +9,7 @@ import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import world.inetum.realdolmen.playground.service.persistance.entities.UserEntity;
 import world.inetum.realdolmen.playground.service.services.PlayService;
 import world.inetum.realdolmen.playground.service.services.UserService;
@@ -23,6 +24,7 @@ import static org.mockito.Mockito.when;
 )
 @Provider("playground-rest")
 @PactFolder("pacts")
+@ActiveProfiles("pact")
 @MockBean(PlayService.class)
 class ControllerPactIT {
 
