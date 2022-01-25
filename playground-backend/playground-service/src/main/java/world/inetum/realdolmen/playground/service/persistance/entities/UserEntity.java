@@ -24,10 +24,14 @@ public class UserEntity {
     }
 
     public UserEntity(UUID uuid, String email, String country) {
+        this(uuid, email, country, 0);
+    }
+
+    public UserEntity(UUID uuid, String email, String country, int amount) {
         this.uuid = uuid;
         this.email = email;
         this.country = country;
-        this.amount = 0;
+        this.amount = amount;
     }
 
     public UUID getUuid() {
