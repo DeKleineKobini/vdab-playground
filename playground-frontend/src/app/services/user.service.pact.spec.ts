@@ -29,7 +29,7 @@ describe("User Contracts", () => {
             .willRespondWith({
               status: 200,
               headers: {
-                "Content-Type": PactUtil.APPLICATION_JSON_UTF8,
+                "Content-Type": PactUtil.APPLICATION_JSON,
               },
               body: ResponseMatchers.USERS,
             }), done);

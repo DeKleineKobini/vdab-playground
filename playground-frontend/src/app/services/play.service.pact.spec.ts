@@ -30,9 +30,6 @@ describe("Play Contracts", () => {
             })
             .willRespondWith({
               status: 200,
-              headers: {
-                "Content-Type": PactUtil.APPLICATION_JSON_UTF8,
-              },
             }), done);
       });
 
@@ -63,9 +60,6 @@ describe("Play Contracts", () => {
             })
             .willRespondWith({
               status: 200,
-              headers: {
-                "Content-Type": PactUtil.APPLICATION_JSON_UTF8,
-              },
             }), done);
       });
 

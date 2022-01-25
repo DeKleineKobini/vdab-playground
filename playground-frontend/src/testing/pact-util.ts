@@ -2,7 +2,7 @@ import {Interaction, PactWeb} from "@pact-foundation/pact-web";
 
 export class PactUtil {
 
-  static readonly APPLICATION_JSON_UTF8: string = "application/json; charset=UTF-8";
+  static readonly APPLICATION_JSON: string = "application/json";
 
   provider: PactWeb;
 

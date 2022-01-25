@@ -38,6 +38,7 @@
         <validation-api.version>1.1.0.Final</validation-api.version>
         <jsr305.version>3.0.2</jsr305.version>
         <springfox-swagger.version>3.0.0</springfox-swagger.version>
+        <pact-junit5spring.version>4.3.4</pact-junit5spring.version>
     </properties>
 
     <modules>
@@ -96,6 +97,13 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-boot-starter</artifactId>
                 <version>${springfox-swagger.version}</version>
+            </dependency>
+
+            <!-- Pact -->
+            <dependency>
+                <groupId>au.com.dius.pact.provider</groupId>
+                <artifactId>junit5spring</artifactId>
+                <version>${pact-junit5spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
